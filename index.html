@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lib/center/center.css">
+    <link rel="stylesheet" href="lib/maku/maku.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- End Google Fonts -->
+</head>
+<body>
+    <div id="main" style="position: relative; top: 0; left: 0;"></div>
+    <!-- <img src="./old/201.jpg" height="100" style="position: relative; opacity: 0.5;"> -->
+    <select id="select"></select>
+    <select id="select1"></select>
+
+    <script src="lib/center/center.js"></script>
+    <script src="lib/maku/maku.js"></script>
+    <script src="lib/maku/dest.js"></script>
+    <script src="lib/maku/data.js"></script>
+    <script>
+        let maku = new Hokomaku("main");
+        let str = ``;
+        for (const key in KYOTO_CITY_BUS) {
+            const element = KYOTO_CITY_BUS[key];
+            str += `<option value="${key}">${key}</option>`;
+        }
+        let select = document.getElementById("select");
+        select.innerHTML = str;
+        select.onchange = (e) => {
+            let value = document.getElementById("select").value;
+            maku.drawWithInfo(KYOTO_CITY_BUS[value]);
+        };
+
+        str = "";
+        for (const key in KYOTO_CITY_BUS_ROUTE) {
+            if (Object.hasOwnProperty.call(KYOTO_CITY_BUS_ROUTE, key)) {
+                const element = KYOTO_CITY_BUS_ROUTE[key];
+                str += `<option value="${key}">${key}</option>`;
+            }
+        }
+        let select1 = document.getElementById("select1");
+        select1.innerHTML = str;
+        select1.onchange = (e) => {
+            let value = document.getElementById("select1").value;
+            const info = KYOTO_CITY_BUS_ROUTE[value];
+            console.log(info);
+            maku.drawRoute(info.number, info.sub, info.color, info.isReverse);
+        };
+    </script>
+</body>
+</html>

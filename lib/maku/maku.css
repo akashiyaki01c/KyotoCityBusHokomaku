@@ -1,0 +1,149 @@
+:root {
+    --street-nishioji-color: #fac745;
+    --street-sembon-color: #c196bc;
+    --street-horikawa-color: #5ac097;
+    --street-kawaramachi-color: #a0d8e5;
+    --street-higashiyama-color: #f07051;
+    --street-shirakawa-color: #fff;
+    --route-loop-color: #cd6c3f;
+    --route-normal-color: #2e57a5;
+    --route-express-color: #f00;
+    --route-seiriken-color: #fff;
+}
+
+.hokomaku {
+    width: 430px; height: 100px;
+    font-family: 'Noto Sans JP';
+    background-color: black;
+    position: relative;
+    white-space: nowrap;
+}
+.hokomaku-inner {
+    display: flex;
+    width: 95%; height: 80%;
+    margin: 2.5% 2.5%;
+    position: absolute;
+}
+
+.street-color-outer {
+    height: 100%;
+    flex: 0 5%;
+    min-width: 5%;
+    max-width: 5%;
+}
+
+.dest-outer {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.street-name {
+    flex: 0 25%;
+    max-height: 25%;
+    margin-left: 1.5%;
+    font-size: 1rem;
+    letter-spacing: 4px;
+}
+.dest-main {
+    flex: 1;
+    text-align: center;
+    display:flex; 
+    justify-content:center;
+    overflow: visible;
+    white-space: nowrap;
+}
+.dest-main span {
+    display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    transform-origin: center;
+}
+.street-color-line {
+    flex: 0 3%;
+    min-height: 3%;
+}
+.dest-english {
+    flex: 0 25%;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    font-weight: 500;
+}
+
+.route-outer {
+    height: 100%;
+    flex: 0 30%;
+    max-width: 30%;
+    min-width: 30%;
+    margin-left: 1%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', 'Noto Sans JP';
+}
+.route-outer.hokomaku-reverse {
+    flex-direction: column-reverse;
+}
+.route-upper {
+    flex: 0 37.5%;
+    min-height: 37.5%;
+    max-height: 37.5%;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    width: 95%;
+    left: 2.5%;
+    top: 2.5%;
+    position: relative;
+}
+.hokomaku-reverse .route-upper {
+    top: -2.5%;
+}
+.route-lower {
+    flex: 1;
+    max-width: 100%;
+    color: white;
+    text-align: center;
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.hokomaku-hide { display: none; }
+
+/* 幕 */
+.route-color-normal { background-color: var(--route-normal-color); }
+.route-color-loop { background-color: var(--route-loop-color); }
+.route-color-seiriken { background-color: var(--route-seiriken-color); }
+.route-color-seiriken > div { color: #000; }
+.route-color-normal .route-upper { background-color: white; }
+.route-color-loop .route-upper { background-color: white; }
+.route-color-seiriken .route-upper { background-color: white; }
+
+.street-color-nishioji { background-color: var(--street-nishioji-color); }
+.street-color-sembon { background-color: var(--street-sembon-color); }
+.street-color-horikawa { background-color: var(--street-horikawa-color); }
+.street-color-kawaramachi { background-color: var(--street-kawaramachi-color); }
+.street-color-higashiyama { background-color: var(--street-higashiyama-color); }
+.street-color-shirakawa { background-color: var(--street-shirakawa-color); }
+.street-color-none.street-color-line { background-color: var(--street-shirakawa-color); }
+
+.street-color-line.express-line {
+    flex: 0 1px;
+    max-height: 1px;
+    min-height: 0;
+    height: 50%;
+    border-top: 2px solid white;
+    position: relative; 
+}
+.express-line::after { 
+    width: 100%; 
+    height: 300%; 
+    background-color: white; 
+    content: ' ';
+    display: inline-block;
+    position: absolute;
+    top: -7px;
+}
